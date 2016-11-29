@@ -21,4 +21,17 @@ class Places
     @@all_places = []
   end
 
+  define_singleton_method(:delete_instance) do |location|
+    counter = 0
+    @@all_places.each do |place|
+      if place.location() == location
+        @@all_places.slice!(counter)
+      else
+      counter += 1
+      end
+    end
+    counter = 0
+    @@all_places
+  end
+
 end

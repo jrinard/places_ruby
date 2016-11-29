@@ -3,8 +3,9 @@ require('places')
 require('pry')
 
 describe(Places) do
-  # before() do
-  #   Task.clear()
+  before() do
+    Places.clear()
+  end
   describe('#location') do
     it('gives the object a location name') do
       test_place = Places.new('Portland')
@@ -31,6 +32,18 @@ describe(Places) do
       Places.new('vancouver').save()
       Places.clear()
       expect(Places.all()).to(eq([]))
+    end
+  end
+
+  describe(".delete_instance") do
+    it("deletes a Places object from a given location") do
+      test_place1 = Places.new("vancouver")
+      test_place1.save()
+      test_place2 = Places.new("Portland")
+      test_place2.save()
+      Places.delete_instance("Portland")
+      expect(Places.all()).to(eq([test_place1]))
+
     end
   end
 

@@ -15,3 +15,9 @@ post('/places') do
   place.save()
   erb(:success)
 end
+
+post('/deplaces') do
+  dlocation = params.fetch("dlocation")
+  Places.delete_instance(dlocation)
+  erb(:success)
+end
