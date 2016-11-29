@@ -12,5 +12,26 @@ describe(Places) do
     end
   end
 
+  describe('.all') do
+    it('returns all places') do
+      expect(Places.all()).to(eq([]))
+    end
+  end
+
+  describe('#save') do
+    it("stores a place in the all places array") do
+      test_place = Places.new('Vancouver')
+      test_place.save()
+      expect(Places.all()).to(eq([test_place]))
+    end
+  end
+
+  describe('.clear') do
+    it('clears the all places array') do
+      Places.new('vancouver').save()
+      Places.clear()
+      expect(Places.all()).to(eq([]))
+    end
+  end
 
 end
